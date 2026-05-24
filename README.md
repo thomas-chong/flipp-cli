@@ -1,5 +1,7 @@
 # flipp-cli
 
+[![skills.sh](https://skills.sh/b/thomas-chong/flipp-cli)](https://skills.sh/thomas-chong/flipp-cli)
+
 AI-agent-friendly CLI for the [Flipp](https://flipp.com) flyer & deals API.
 
 Search weekly grocery and retail deals across North America from any shell or

@@ -1,5 +1,7 @@
 # Skills
 
+[![skills.sh](https://skills.sh/b/thomas-chong/flipp-cli)](https://skills.sh/thomas-chong/flipp-cli)
+
 AI-agent skills that ship alongside `flipp-cli`. Each subfolder contains a
 `SKILL.md` that follows the [skills.sh](https://www.skills.sh) convention so
 it can be installed by any compatible agent runtime.
