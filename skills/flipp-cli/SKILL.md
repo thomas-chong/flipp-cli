@@ -1,18 +1,6 @@
 ---
 name: flipp-cli
-description: >-
-  Find current grocery and retail deals, weekly flyers, store coupons, and
-  merchant lists for any postal/ZIP code in Canada or the US, using the
-  `flipp` CLI. Use this skill whenever the user asks about saving money on
-  groceries, planning meals around what's on sale, building a shopping list
-  across multiple stores, hunting weekly flyer deals, stacking coupons,
-  comparing prices across retailers like Loblaws, Walmart, Costco, No Frills,
-  Sobeys, Shoppers, Metro, Safeway, Kroger, or Target, finding loss-leaders,
-  doing pantry restocking from deals, planning a Costco run, or generating a
-  weekly savings digest — even if they don't say the word "Flipp."
-  Especially useful for AI agents doing recipe planning that needs to be
-  cost-aware. The CLI supports bulk operations — pass many ingredients at
-  once with a single `flipp search` call.
+description: "Find current grocery and retail deals, weekly flyers, store coupons, and merchant lists for any postal/ZIP code in Canada or the US, using the `flipp` CLI. Use this skill whenever the user asks about saving money on groceries, planning meals around what's on sale, building a shopping list across multiple stores, hunting weekly flyer deals, stacking coupons, comparing prices across retailers like Loblaws, Walmart, Costco, No Frills, Sobeys, Shoppers, Metro, Safeway, Kroger, or Target, finding loss-leaders, doing pantry restocking from deals, planning a Costco run, or generating a weekly savings digest — even if they don't say the word \"Flipp.\" Especially useful for AI agents doing recipe planning that needs to be cost-aware. The CLI supports bulk operations — pass many ingredients at once with a single `flipp search` call."
 ---
 
 # flipp-cli
