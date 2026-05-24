@@ -132,7 +132,8 @@ endpoints accept `locale` and `postal_code` query params.
 
 ## FAQ
 
-### Can it actually do apples-to-apples price comparison?
+<details>
+<summary><b>Can it actually do apples-to-apples price comparison?</b></summary>
 
 Mostly, yes — but with a documented two-pass workflow. Raw `price` lies
 ("$5.99 for 4 L of milk" beats "$2.49 for 1 L"). Pass `--unit-price` and
@@ -158,7 +159,10 @@ vision pass to extract the size. The CLI deliberately does **not** call any
 vision model itself — that's the agent's job, keeps `flipp-cli`
 dependency-free.
 
-### What about bundle / "buy this or that" listings?
+</details>
+
+<details>
+<summary><b>What about bundle / "buy this or that" listings?</b></summary>
 
 Flyer entries like *"MILK 4L OR CHEESE SLICES 22's $6.19"* are real and
 common. The CLI flags them in the `unit_price.warning` field:
@@ -172,7 +176,10 @@ the $1.55/L number is computed against the 4 L token but you may actually
 be paying $6.19 for cheese instead. Vision-fall-back on the image is the
 right move here.
 
-### Why does `flipp deals` take longer than `flipp search`?
+</details>
+
+<details>
+<summary><b>Why does <code>flipp deals</code> take longer than <code>flipp search</code>?</b></summary>
 
 `deals` parallel-fans-out 4–20 keyword searches (one per item in the
 category pack) and aggregates client-side. Wall-clock is one round-trip but
@@ -180,7 +187,10 @@ upstream load is N requests. If you already have a specific list of items
 to look for, prefer `flipp search a b c d --merchant X` — same parallelism,
 narrower set.
 
-### What if a query returns weird matches ("milk" → "milk thistle tea")?
+</details>
+
+<details>
+<summary><b>What if a query returns weird matches ("milk" → "milk thistle tea")?</b></summary>
 
 The upstream relevancy ranker leans on keyword recall, not semantic match.
 Two mitigations:
@@ -192,21 +202,30 @@ Two mitigations:
 The CLI surfaces upstream results verbatim so the agent can apply its own
 judgment.
 
-### Why doesn't it track historical prices?
+</details>
+
+<details>
+<summary><b>Why doesn't it track historical prices?</b></summary>
 
 Out of scope for a stateless CLI. Each invocation is a fresh upstream call.
 `item_id` is stable while a flyer is active, so an agent that runs the CLI
 on a schedule can diff `item_id + current_price` across runs to build its
 own price history.
 
-### Is `flipp-cli` affiliated with Flipp Operations Inc.?
+</details>
+
+<details>
+<summary><b>Is <code>flipp-cli</code> affiliated with Flipp Operations Inc.?</b></summary>
 
 **No.** This is an independent third-party wrapper around the same
 unauthenticated HTTP endpoints that flipp.com's own web client uses. It
 was built by reverse-engineering observable network traffic; there is no
 private API key, no partnership, and no endorsement.
 
-### Will it break if Flipp changes their API?
+</details>
+
+<details>
+<summary><b>Will it break if Flipp changes their API?</b></summary>
 
 Almost certainly yes, eventually. We consume endpoints that are public but
 **not officially documented or supported**. If Flipp restructures their
@@ -214,7 +233,10 @@ backend, renames fields, adds auth, or throttles aggressively, parts of
 this CLI may stop working without warning. Issues are welcome — fixes will
 ship as fast as possible.
 
-### Is it rate-limited?
+</details>
+
+<details>
+<summary><b>Is it rate-limited?</b></summary>
 
 The CLI itself does not throttle. Flipp's backend may; you'll see HTTP 429
 surface as `{"error":{"code":"upstream_error", "exitCode": 6, ...}}`. Be a
@@ -225,7 +247,10 @@ good citizen:
 - If you're building anything commercial-scale, reach out to Flipp's
   business team for a sanctioned data feed
 
-### Can I use this commercially?
+</details>
+
+<details>
+<summary><b>Can I use this commercially?</b></summary>
 
 The code is MIT-licensed. **Use of Flipp's API**, on the other hand, is
 governed by [Flipp's Terms of Use](https://corp.flipp.com/legal/terms_of_use/),
@@ -233,7 +258,16 @@ which you should read carefully before any commercial deployment. The
 endpoints are public web resources, but that does not grant a redistribution
 or resale license to the underlying data.
 
-## Limitations (current)
+</details>
+
+## Limitations & caveats
+
+> **This is a third-party wrapper on public web endpoints, not a sanctioned
+> Flipp API client.** Expand the sections below before shipping anything
+> commercial-scale.
+
+<details>
+<summary><b>Current limitations</b></summary>
 
 - **No write operations.** Cannot create lists, favorites, carts, or
   submit coupons. Read-only by design.
@@ -250,10 +284,10 @@ or resale license to the underlying data.
 - **No image normalization.** `clipping_image_url` is a CloudFront-signed
   URL with a TTL; agents should fetch promptly and not bookmark.
 
-## Caveats — read before you ship
+</details>
 
-> **This is a third-party wrapper on public web endpoints, not a sanctioned
-> Flipp API client.**
+<details>
+<summary><b>Things to know before shipping</b></summary>
 
 - Endpoints can change without notice. Pin a CLI version and watch for
   upstream drift.
@@ -267,6 +301,8 @@ or resale license to the underlying data.
 - The maintainers are not affiliated with, sponsored by, or endorsed by
   Flipp Operations Inc., Wishabi, or any retailer represented in the API
   responses.
+
+</details>
 
 ## Development
 
