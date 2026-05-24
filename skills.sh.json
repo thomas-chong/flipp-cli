@@ -1,0 +1,10 @@
+{
+  "$schema": "https://skills.sh/schemas/skills.sh.schema.json",
+  "groupings": [
+    {
+      "title": "Flipp CLI",
+      "description": "Skills for finding grocery and retail deals via the Flipp public API. Bulk-friendly, JSON-first, designed for AI agents doing recipe planning, shopping optimization, and coupon stacking.",
+      "skills": ["flipp-cli"]
+    }
+  ]
+}
